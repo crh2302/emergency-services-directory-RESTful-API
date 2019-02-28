@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Emergency Services Directory</title>
+    <!-- Bootstrap v4.x stylesheet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap\css\bootstrap.min.css">
+
+    <!-- Tooltipster plugin css -->
+    <link rel="stylesheet" href="plugins\tooltipster\css\tooltipster.bundle.min.css">
+    <link rel="stylesheet" href="plugins\tooltipster\css\plugins\tooltipster\sideTip\themes\tooltipster-sideTip-borderless.min.css">
+
+    <!-- tablesorter bootstrap css theme -->
+    <link rel="stylesheet" href="tablesorter\css\theme.bootstrap_4.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+    <!-- tablesorter plugin -->
+    <script type="text/javascript" src="tablesorter\js\jquery.tablesorter.js"></script>
+    <!-- tablesorter widgets -->
+    <script type="text/javascript" src="tablesorter\js\jquery.tablesorter.widgets.js"></script>
+    <!-- pager plugin -->
+    <link rel="stylesheet" href="tablesorter\addons\pager\jquery.tablesorter.pager.css">
+    <script src="tablesorter\addons\pager\jquery.tablesorter.pager.js"></script>
+
+    <!-- My plugin -->
+    <script type="text/javascript" src="plugins\myplugin\cervantesPlugin.js"></script>
+
+    <!-- Plugins (3)  -->
+    <script src="plugins\typist\jquery.typist.js"></script>
+    <script type="text/javascript" src="plugins\tooltipster\js\tooltipster.bundle.min.js"></script>
+    <script type="text/javascript" src="plugins\textresizer\jquery.textresizer.js"></script>
+
+
+
+
+    <!-- Bootstrap v4.x js -->
+    <script src="bootstrap\js\bootstrap.min.js"></script>
+
+    <!-- scripts  -->
+    <script type="text/javascript" src="js\script.js" async defer></script>
+    <script type="text/javascript" src="js\underscore.js"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh2OLId9bTFREOxvngUJTGRPMfPn3Cwus&callback=project3.initMap" async defer></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css\style.css">
+</head>
+
+<body>
+    <div id="top" class="sticky-top row">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 vertical-align">
+                    <i class="fas fa-search fa-4x "></i>
+                </div>
+                <div class="col-6 mx-auto">
+                    <h1 class="typist"></h1>
+                    <!-- <h2>Project 3</h2> -->
+                </div>
+                <div class="col-3 vertical-align">
+                    <i class="fas fa-user-md fa-4x"></i>
+                    <!-- <i class="fas fa-ambulance fa-5x"></i> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <form id="search-form">
+            <fieldset class="form-group">
+                <div class="form-row">
+                    <div class="col-6 mx-auto">
+                      <legend>Search Criteria</legend>
+                       <ul id="text-resizer-controls" class="textresizer  list-inline">
+                           <li class="list-inline-item textresizer-label">Text Size:</li>
+                           <li class="list-inline-item"><a href="#nogo">Small</a></li>
+                           <li class="list-inline-item"><a href="#nogo">Medium</a></li>
+                           <li class="list-inline-item"><a href="#nogo">Large</a></li>
+                           <li class="list-inline-item"><a href="#nogo">Larger</a></li>
+                       </ul>
+                        <hr>
+
+                        <div class="form-group">
+                            <label class="textsize" for="orgType">Organization Type</label>
+                            <select class="form-control plugin-tooltip" title="Select the type of organization" id="orgType" name="type"></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="textsize" for="orgName">Organization Name</label>
+                            <input class="form-control plugin-tooltip" id="orgName" type="text" name="name" aria-describedby="orgName-info"
+                             title="You can enter the name of the organization. *can be partial - 'vol' for 'Volunteer'">
+                            <!-- <small class="form-text text-muted" id="orgName-info">*can be partial - "vol" for "Volunteer"</small> -->
+                        </div>
+                        <div class="form-group">
+                            <label class="textsize" for="state">State</label>
+                            <select class="form-control plugin-tooltip" id="state"
+                             name="state" title="Select the state">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="textsize" for="city">City</label>
+                            <select class="form-control plugin-tooltip" id="city" name="city"
+                             title="Select the city"></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="textsize" for="county">County</label>
+                            <input class="form-control plugin-tooltip" id="county"
+                            type="text" name="county" title="Select the county">
+                        </div>
+                        <div class="form-group">
+                            <label class="textsize" for="zip">ZIP Code</label>
+                            <input class="form-control plugin-tooltip" id="zip"
+                            type="text" name="zip" title="Select the zip code">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-6 mx-auto">
+                        <div class="form-group">
+                            <button id="btnSearch" type="button" class="btn btn-primary">Show Results</button>
+                            <button id="btnReset" type="reset" class="btn btn-secondary">Reset</button>
+                            <!-- <input value="Show Results" id="btnSearch" class="button" type="button"> <input id="btnReset" type="reset" class="button" value="Reset Form" onclick=""> -->
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10 mx-auto" id="tableOutput"></div>
+
+        </div>
+
+    </div>
+
+    <!-- <form>
+      <p>Input org Id:</p>
+      <input type="text" id="orgId"/><input type="button" value="find data" onclick=""/>
+    </form> -->
+
+    <div class="container">
+        <!-- <h2>Large Modal</h2> -->
+        <!-- Button to Open the Modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      <a data-toggle="modal" data-target="#myModal">Open modal</a>
+    </button> -->
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Results</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body" id="modal-body-header">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="modal-body" id="modal-body-content">
+                        <div class="tab-content" id="nav-tabContent">
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

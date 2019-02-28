@@ -1,0 +1,70 @@
+.tablesorter-pager .btn-group-sm .btn {
+    font-size: 1.2em;
+    /* make pager arrows more visible */
+}
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+
+#map {
+    height: 300px;
+    width: 100%;
+    background-color: grey;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#orgName-info {
+    color: rgb(104, 129, 162);
+}
+
+#btnSearch {
+    width: 50%;
+}
+
+#btnReset {
+    width: 49%;
+}
+
+/* background-color: #0b83e6; */
+
+#top {
+    text-align: center;
+    background-color: #0b83e6;
+    color: white;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+hr {
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+#btnSearch {
+    background-color: #0b83e6;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table .thead-dark th {
+    color: white;
+    background-color: #0b83e6;
+    border-color: #0b83e6;
+}
+.g-inf-lab{
+  font-weight: bold;
+}
+
+
+.fontsize{
+  font-size: 14px;
+}
